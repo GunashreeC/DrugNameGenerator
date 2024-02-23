@@ -16,5 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Display results on the result page
         document.getElementById('usernameResult').innerText = username;
         document.getElementById('cancerNameResult').innerText = `${firstName} ${lastName} ${randomCancerName}`;
+        
+        // Redirect to the result page
+        window.location.href = "result.html";
     });
 });
