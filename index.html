@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Cancer Name Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Name Generator</title>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Cancer Name Generator</h1>
-        <form action="result.html" method="post" id="nameForm">
+        <form action="{{ url_for('generate') }}" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
+            <input type="text" name="username" required>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" required>
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" required>
             <button type="submit">Generate</button>
         </form>
     </div>

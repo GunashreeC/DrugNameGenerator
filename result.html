@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Name Generator - Result</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Name Generator Result</title>
 </head>
 <body>
     <div class="container">
-        <h2>Hi, <span id="usernameResult"></span>!</h2>
-        <p>Your Cancer Name:</p>
-        <p id="cancerNameResult"></p>
-        <a href="index.html">Go Back</a>
+        <h1>Hi, {{ username }}!</h1>
+        <p>Your new name is: {{ first_name }} {{ last_name }} {{ first_drug_name }} {{ last_drug_name }}</p>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
