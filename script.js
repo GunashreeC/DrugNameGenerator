@@ -72,7 +72,7 @@ function generateNames() {
   }
   
   // Code for second.html
-  if (window.location.href.includes('second.html')) {
+ /* if (window.location.href.includes('second.html')) {
     const greetingElement = document.getElementById('greeting');
     const generatedNamesElement = document.getElementById('generatedNames');
   
@@ -82,5 +82,63 @@ function generateNames() {
   
     greetingElement.textContent = `Hi, ${username}!`;
     generatedNamesElement.textContent = `Your cancer drug name is: ${generatedFirstName} ${generatedLastName}`;
+  }*/
+  
+// Code for second.html
+ if (window.location.href.includes('second.html')) {
+    const greetingElement = document.getElementById('greeting');
+    const generatedNamesElement = document.getElementById('generatedNames');
+    const printButton = document.getElementById('printButton');
+  
+    const username = localStorage.getItem('username');
+    const generatedFirstName = localStorage.getItem('generatedFirstName');
+    const generatedLastName = localStorage.getItem('generatedLastName');
+  
+    greetingElement.textContent = `Hi, ${username}!`;
+    generatedNamesElement.textContent = `Your new names: ${generatedFirstName} ${generatedLastName}`;
+  
+    printButton.addEventListener('click', function() {
+      window.print();
+    });
   }
+  // ... (previous code)
+
+function printContent() {
+    const container = document.querySelector('.container');
+    const printWindow = window.open('', '_blank');
+    
+    if (printWindow) {
+      const contentToPrint = container.innerHTML;
+      printWindow.document.open();
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Print</title>
+            <style>
+              body {
+                font-family: 'Arial', sans-serif;
+              }
+              .container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: none;
+              }
+            </style>
+          </head>
+          <body onload="window.print(); window.onafterprint = function () { window.close(); }">
+            ${contentToPrint}
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+    } else {
+      alert('Please allow pop-ups to print.');
+    }
+  }
+  
+  // Code for second.html
+  // ...
+  
+  
   
