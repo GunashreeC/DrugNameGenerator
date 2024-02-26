@@ -18,7 +18,55 @@ function generateNames() {
   function generateCancerDrugName() {
     // Implement your logic for generating cancer drug names here
     // For simplicity, you can use a static list or any logic you prefer
-    const drugNames = ['Drug1', 'Drug2', 'Drug3'];
+    const drugNames = ['ABVD',
+    'AC',
+    'ATO',
+    'ATRA',
+    'Abemaciclib (Verzenois)',
+    'Abiraterone (Zytiga)',
+    'Abraxane',
+    'Abstral',
+    'Acalabrutinib',
+    'Actimorph',
+    'Actinomycin D',
+    'Actiq',
+    'Adriamycin',
+    'Afatinib',
+    'Afinitor',
+    'Aldara',
+    'Alectinib',
+    'Alectinib',
+    'Alemtuzumab',
+    'Alkeran',
+    'Anastrazole (Arimidex)',
+    'Apalutamide',
+    'Ara C',
+    'Arimidex',
+    'Aromasin',
+    'Arsenic trioxide', 'Tretinoin',
+    'Asparaginase',
+    'Avelumab',
+    'Axitinib',
+    'Azacitidine','BEACOPP',
+    'BEAM',
+    'Bendamustine',
+    'Besponsa',
+    'Bevacizumab',
+    'Bexarotene',
+    'Bicalutamide',
+    'Bleomycin',
+    'Bleomycin, etoposide and platinum',
+    'Blinatumomab',
+    'Bortezomib',
+    'Bortezomib thalidomide and dexamethasone',
+    'Bortezomib, cyclophosphamide and dexamethasone',
+    'Bortezomib, melphalan and prednisalone',
+    'Bosulif',
+    'Bosutinib',
+    'Brentuximab',
+    'Brigatinib',
+    'Buserelin',
+    'Busulfan', 'Drug3'];
     const randomIndex = Math.floor(Math.random() * drugNames.length);
     return drugNames[randomIndex];
   }
@@ -33,6 +81,6 @@ function generateNames() {
     const generatedLastName = localStorage.getItem('generatedLastName');
   
     greetingElement.textContent = `Hi, ${username}!`;
-    generatedNamesElement.textContent = `Your new names: ${generatedFirstName} ${generatedLastName}`;
+    generatedNamesElement.textContent = `Your cancer drug name is: ${generatedFirstName} ${generatedLastName}`;
   }
   
