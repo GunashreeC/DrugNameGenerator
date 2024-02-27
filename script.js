@@ -2,6 +2,8 @@ function generateNames() {
     const email = document.getElementById('email').value;
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
+    const cancerType = document.getElementById('cancerType').value;
+
   
     const generatedFirstName = generateCancerDrugName();
     const generatedLastName = generateCancerDrugName();
@@ -30,7 +32,7 @@ function generateNames() {
     'Cabometyx','Cabozantinib','Caelyx','Calpol','Campto','Capecitabine','Caprelsa','CarboTaxol','Carboplatin','Carfilzomib','Carmustine','Casodex','Cemiplimab',
     'Ceritinib','Cetuximab','Chlorambucil','Cisplatin','Cladribine','Clasteon','Co-codamol','Cometriq','Cosmegen','Crisantaspase','Crizotinib','Cyclophosphamide',
     'Cyprostat','Cyproterone acetate','Cytarabine','Cytosine arabinoside'];
-    
+
     const randomIndex = Math.floor(Math.random() * drugNames.length);
     return drugNames[randomIndex];
   }

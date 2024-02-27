@@ -13,6 +13,15 @@
 
   <div class="container">
     <form id="nameForm">
+      <label for="cancerType">Choose Cancer Type:</label>
+      <select id="cancerType" required>
+        <option value="" selected disabled>Select Cancer Type</option>
+        <option value="breast">Breast Cancer</option>
+        <option value="lung">Lung Cancer</option>
+        <option value="prostate">Prostate Cancer</option>
+        <option value="cervical">Cervical Cancer</option>
+        <option value="colorectal">Colorectal Cancer</option>
+      </select><br>
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required>      
       <label for="firstName">First Name:</label>
