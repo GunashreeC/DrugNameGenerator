@@ -1,5 +1,5 @@
 function generateNames() {
-    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
   
@@ -7,85 +7,35 @@ function generateNames() {
     const generatedLastName = generateCancerDrugName();
   
     // Save data to localStorage
-    localStorage.setItem('username', username);
+    localStorage.setItem('username', firstName); // Assuming 'username' should be saved as 'email'
     localStorage.setItem('generatedFirstName', generatedFirstName);
     localStorage.setItem('generatedLastName', generatedLastName);
   
     // Redirect to second.html
     window.location.href = 'second.html';
-  }
-  
+}
+
+
   function generateCancerDrugName() {
     // Implement your logic for generating cancer drug names here
     // For simplicity, you can use a static list or any logic you prefer
     const drugNames = ['ABVD',
-    'AC',
-    'ATO',
-    'ATRA',
-    'Abemaciclib (Verzenois)',
-    'Abiraterone (Zytiga)',
-    'Abraxane',
-    'Abstral',
-    'Acalabrutinib',
-    'Actimorph',
-    'Actinomycin D',
-    'Actiq',
-    'Adriamycin',
-    'Afatinib',
-    'Afinitor',
-    'Aldara',
-    'Alectinib',
-    'Alectinib',
-    'Alemtuzumab',
-    'Alkeran',
-    'Anastrazole (Arimidex)',
-    'Apalutamide',
-    'Ara C',
-    'Arimidex',
-    'Aromasin',
-    'Arsenic trioxide', 'Tretinoin',
-    'Asparaginase',
-    'Avelumab',
-    'Axitinib',
-    'Azacitidine','BEACOPP',
-    'BEAM',
-    'Bendamustine',
-    'Besponsa',
-    'Bevacizumab',
-    'Bexarotene',
-    'Bicalutamide',
-    'Bleomycin',
-    'Bleomycin, etoposide and platinum',
-    'Blinatumomab',
-    'Bortezomib',
-    'Bortezomib thalidomide and dexamethasone',
-    'Bortezomib, cyclophosphamide and dexamethasone',
-    'Bortezomib, melphalan and prednisalone',
-    'Bosulif',
-    'Bosutinib',
-    'Brentuximab',
-    'Brigatinib',
-    'Buserelin',
-    'Busulfan', 'Drug3'];
+    'AC','ATO','ATRA','Abemaciclib (Verzenois)','Abiraterone (Zytiga)','Abraxane','Abstral','Acalabrutinib','Actimorph','Actinomycin D','Actiq','Adriamycin','Afatinib','Afinitor',
+    'Aldara','Alectinib','Alectinib','Alemtuzumab','Alkeran','Anastrazole (Arimidex)','Apalutamide','Ara C','Arimidex','Aromasin',
+    'Tretinoin','Asparaginase','Avelumab','Axitinib','Azacitidine',
+
+    'BEACOPP','BEAM','Bendamustine','Besponsa','Bevacizumab','Bexarotene','Bicalutamide','Bleomycin','Bleomycin','Blinatumomab', 'Bortezomib',
+    'Bortezomib','Bortezomib','Bortezomib','Bosulif','Bosutinib','Brentuximab','Brigatinib','Buserelin','Busulfan', 'Cabazitaxel',
+
+    'Cabometyx','Cabozantinib','Caelyx','Calpol','Campto','Capecitabine','Caprelsa','CarboTaxol','Carboplatin','Carfilzomib','Carmustine','Casodex','Cemiplimab',
+    'Ceritinib','Cetuximab','Chlorambucil','Cisplatin','Cladribine','Clasteon','Co-codamol','Cometriq','Cosmegen','Crisantaspase','Crizotinib','Cyclophosphamide',
+    'Cyprostat','Cyproterone acetate','Cytarabine','Cytosine arabinoside'];
+    
     const randomIndex = Math.floor(Math.random() * drugNames.length);
     return drugNames[randomIndex];
   }
   
-  // Code for second.html
- /* if (window.location.href.includes('second.html')) {
-    const greetingElement = document.getElementById('greeting');
-    const generatedNamesElement = document.getElementById('generatedNames');
-  
-    const username = localStorage.getItem('username');
-    const generatedFirstName = localStorage.getItem('generatedFirstName');
-    const generatedLastName = localStorage.getItem('generatedLastName');
-  
-    greetingElement.textContent = `Hi, ${username}!`;
-    generatedNamesElement.textContent = `Your cancer drug name is: ${generatedFirstName} ${generatedLastName}`;
-  }*/
-  
-// Code for second.html
- if (window.location.href.includes('second.html')) {
+  if (window.location.href.includes('second.html')) {
     const greetingElement = document.getElementById('greeting');
     const generatedNamesElement = document.getElementById('generatedNames');
     const printButton = document.getElementById('printButton');
@@ -95,13 +45,13 @@ function generateNames() {
     const generatedLastName = localStorage.getItem('generatedLastName');
   
     greetingElement.textContent = `Hi, ${username}!`;
-    generatedNamesElement.textContent = `Your new names: ${generatedFirstName} ${generatedLastName}`;
+    generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
   
     printButton.addEventListener('click', function() {
       window.print();
     });
-  }
-  // ... (previous code)
+}
+  
 
 function printContent() {
     const container = document.querySelector('.container');
