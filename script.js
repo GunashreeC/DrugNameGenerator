@@ -137,8 +137,6 @@ function printContent() {
     }
   }
   
-  // Code for second.html
-  // ...
-  
+
   
   

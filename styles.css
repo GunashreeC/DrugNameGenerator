@@ -96,7 +96,6 @@ body {
   }
   
   .container1 {
-    background-image: url('DNA_3d_green.jpeg'); /* Replace 'your_background_image.jpg' with the actual image file path */
     background-size: cover;
     background-position: center;
     padding: 20px;
@@ -121,4 +120,36 @@ body {
   button:hover {
     background-color: #45a049;
   }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+  }
+  
+  video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Place the video behind other elements */
+  }
+  
+  .container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Place the container above the video */
+  }
+  
   
