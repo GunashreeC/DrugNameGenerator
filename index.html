@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Name Generator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="script.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,8 +13,9 @@
         <source src="background.mp4" type="video/mp4">
     </video>
 
-  <div class="container">
-    <form id="nameForm">
+    <div class="container">
+
+     <form id="nameForm">
       <label for="cancerType">Choose Cancer Type:</label>
       <select id="cancerType" required>
         <option value="" selected disabled>Select Cancer Type</option>
@@ -28,9 +31,40 @@
       <input type="text" id="firstName" required>
       <label for="lastName">Last Name:</label>
       <input type="text" id="lastName" required>
+      <button type="button" onclick="savetoexcel()">Save</button>
       <button type="button" onclick="generateNames()">Submit</button>
-    </form>
-  </div>
-  <script src="script.js"></script>
+     </form>
+
+    </div>
+    <script>
+        function savetoexcel() {
+          var email = document.getElementById('email').value;
+          var firstName = document.getElementById('firstName').value;
+          var lastName = document.getElementById('lastName').value;
+          var cancerType = document.getElementById('cancerType').value;
+    
+          // Check if all required fields are filled
+          if (!email || !firstName || !lastName || !cancerType) {
+            alert('Please fill in all required fields.');
+            return;
+          }
+    
+          // Make a POST request to the Google Apps Script web app
+          $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycbz8CXixY31MJZJHZi0iMSm8GUSUufA8rQUX_SPdDAgfUhb0eyyR72WGfxRxHOb51Al2/exec', // Replace with the copied URL
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ email: email, firstName: firstName, lastName: lastName, cancerType: cancerType }),
+            success: function(response) {
+              alert(response);
+              // Optionally, you can redirect or perform other actions after successful save
+            },
+            error: function(error) {
+              console.error('Error saving data:', error);
+            }
+          });
+        }
+      </script>
+
 </body>
 </html>
