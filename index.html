@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Name Generator</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Name Generator</title><!-- Add this to the head section of your HTML file -->
   <script src="script.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,57 +13,28 @@
     </video>
 
     <div class="container">
-
-     <form id="nameForm">
-      <label for="cancerType">Choose Cancer Type:</label>
-      <select id="cancerType" required>
+     <form id="nameForm" action="" method="post">
+     <label for="cancerType">Choose Cancer Type:</label>
+      <select id="cancerType" name="cancerType">
         <option value="" selected disabled>Select Cancer Type</option>
-        <option value="breast">Breast Cancer</option>
-        <option value="lung">Lung Cancer</option>
-        <option value="prostate">Prostate Cancer</option>
-        <option value="cervical">Cervical Cancer</option>
-        <option value="colorectal">Colorectal Cancer</option>
+        <option value="Breast Cancer">Breast Cancer</option>
+        <option value="Lung Cancer">Lung Cancer</option>
+        <option value="Prostate Cancer">Prostate Cancer</option>
+        <option value="Cervical Cancer">Cervical Cancer</option>
+        <option value="Colorectal Cancer">Colorectal Cancer</option>
       </select><br>
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required>      
       <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" required>
+      <input type="text" id="firstName" name="firstName" required>
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" required>
-      <button type="button" onclick="savetoexcel()">Save</button>
+      <input type="text" id="lastName" name="lastName">
+      <button type="submit">Save</button>
       <button type="button" onclick="generateNames()">Submit</button>
      </form>
-
     </div>
-    <script>
-        function savetoexcel() {
-          var email = document.getElementById('email').value;
-          var firstName = document.getElementById('firstName').value;
-          var lastName = document.getElementById('lastName').value;
-          var cancerType = document.getElementById('cancerType').value;
-    
-          // Check if all required fields are filled
-          if (!email || !firstName || !lastName || !cancerType) {
-            alert('Please fill in all required fields.');
-            return;
-          }
-    
-          // Make a POST request to the Google Apps Script web app
-          $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbz8CXixY31MJZJHZi0iMSm8GUSUufA8rQUX_SPdDAgfUhb0eyyR72WGfxRxHOb51Al2/exec', // Replace with the copied URL
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ email: email, firstName: firstName, lastName: lastName, cancerType: cancerType }),
-            success: function(response) {
-              alert(response);
-              // Optionally, you can redirect or perform other actions after successful save
-            },
-            error: function(error) {
-              console.error('Error saving data:', error);
-            }
-          });
-        }
-      </script>
-
+    <script src="googlesheet.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+         
