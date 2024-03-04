@@ -69,6 +69,32 @@ function printContent() {
       alert('Please allow pop-ups to print.');
     }
   }
+
+  function emailResult() {
+    const greeting = document.getElementById('greeting').textContent;
+    const generatedNames = document.getElementById('generatedNames').textContent;
+  
+    // Prompt the user for their email address
+    const userEmail = prompt('Enter your email address:');
+  
+    if (userEmail) {
+      // Send data to sendemail.php using XMLHttpRequest or fetch
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'sendemail.php', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText); // Log the response from sendemail.php
+        }
+      };
+  
+      const data = `userEmail=${encodeURIComponent(userEmail)}&greeting=${encodeURIComponent(greeting)}&generatedNames=${encodeURIComponent(generatedNames)}`;
+      xhr.send(data);
+    } else {
+      alert('Email address is required.');
+    }
+  }
+  
   
   if (window.location.href.includes('second.html')) {
     const greetingElement = document.getElementById('greeting');
