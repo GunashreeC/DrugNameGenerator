@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Name Generator - Result</title>
-  <!-- Add this to the head section of your HTML file -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,10 +17,15 @@
   <div class="container">
     <h1 id="greeting">Hi!</h1>
     <p id="generatedNames"></p>
-    <button onclick="emailResult()">Email</button>
-    <button id="printButton">Print</button>
+    
+  </br>  </br>
+      <button onclick="printNames()">Print</button>
 
-  </div>
-  <script src="script.js"></script>
+      <button><a href="mailto:?subject=Name%20Generator%20Result&body=Hi%20there!%20Here%20is%20the%20result%20of%20the%20name%20generator:%0D%0A%0D%0A[Insert%20Generated%20Names%20or%20Image%20Here]"></a>Email</button>
+
+    <!--  <button onclick="emailResult()">Email</button>-->
+    </div>
+    <script src="script.js"></script>
+
 </body>
 </html>

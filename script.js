@@ -71,29 +71,39 @@ function printContent() {
   }
 
   function emailResult() {
-    const greeting = document.getElementById('greeting').textContent;
-    const generatedNames = document.getElementById('generatedNames').textContent;
+    const container = document.querySelector('.container');
   
-    // Prompt the user for their email address
-    const userEmail = prompt('Enter your email address:');
+    // Use html2canvas to capture the content as an image
+    html2canvas(container).then(canvas => {
+      // Convert canvas to data URL
+      const imageDataUrl = canvas.toDataURL('image/png');
   
-    if (userEmail) {
-      // Send data to sendemail.php using XMLHttpRequest or fetch
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'sendemail.php', true);
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log(xhr.responseText); // Log the response from sendemail.php
-        }
-      };
+      // Ask the user to enter the recipient's email
+      const recipientEmail = prompt('Enter recipient\'s email:');
   
-      const data = `userEmail=${encodeURIComponent(userEmail)}&greeting=${encodeURIComponent(greeting)}&generatedNames=${encodeURIComponent(generatedNames)}`;
-      xhr.send(data);
-    } else {
-      alert('Email address is required.');
-    }
+      if (recipientEmail) {
+        // Use SMTPJS to send the email without specifying the SecureToken
+        Email.send({
+          Host: "smtp.smtpjs.com",
+          Username: "gunagowda971@gmail.com",
+          Password: "smtpjs",
+          To: recipientEmail,
+          From: "gunagowda971@gmail.com",
+          Subject: "Name Generator Result",
+          Body: `<p>Hi there! Here is the result of the name generator:</p><img src="${imageDataUrl}" alt="Name Generator Result">`
+        })
+        .then(function(response) {
+          console.log('Email sent:', response);
+          alert('Email sent successfully!');
+        })
+        .catch(function(error) {
+          console.log('Email failed to send:', error);
+          alert('Failed to send email. Please try again.');
+        });
+      }
+    });
   }
+  
   
   
   if (window.location.href.includes('second.html')) {
