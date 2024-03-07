@@ -104,7 +104,26 @@ function printContent() {
     });
   }
   
-  
+
+function takePhoto() {
+  const video = document.querySelector('video');
+  const canvas = document.getElementById('photoCanvas');
+  const context = canvas.getContext('2d');
+
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  // Display the canvas
+  canvas.style.display = 'block';
+
+  // Optionally, you can save the photo to localStorage
+  const photoDataURL = canvas.toDataURL('image/png');
+  localStorage.setItem('photoDataURL', photoDataURL);
+}
+
+
   
   if (window.location.href.includes('second.html')) {
     const greetingElement = document.getElementById('greeting');
