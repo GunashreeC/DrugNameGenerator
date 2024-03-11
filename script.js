@@ -105,24 +105,88 @@ function printContent() {
   }
   
 
-function takePhoto() {
-  const video = document.querySelector('video');
-  const canvas = document.getElementById('photoCanvas');
-  const context = canvas.getContext('2d');
+// ... existing code ...
 
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
+function openCameraInNewWindow() {
+  const newWindow = window.open('camera.html', '_blank', 'width=600,height=400');
+  newWindow.onload = function () {
+      const photoCanvas = document.getElementById('photoCanvas');
+      const captureButton = document.getElementById('captureButton');
 
-  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      // Message event listener to handle captured photo
+      window.addEventListener('message', function (event) {
+          if (event.origin === window.location.origin) {
+              const photoDataURL = event.data;
+              localStorage.setItem('photoDataURL', photoDataURL);
 
-  // Display the canvas
-  canvas.style.display = 'block';
-
-  // Optionally, you can save the photo to localStorage
-  const photoDataURL = canvas.toDataURL('image/png');
-  localStorage.setItem('photoDataURL', photoDataURL);
+              // Display the captured photo on the main page
+              const context = photoCanvas.getContext('2d');
+              const img = new Image();
+              img.src = photoDataURL;
+              img.onload = function () {
+                  photoCanvas.width = img.width;
+                  photoCanvas.height = img.height;
+                  context.drawImage(img, 0, 0, img.width, img.height);
+                  photoCanvas.style.display = 'block';
+                  captureButton.style.display = 'block';
+              };
+          }
+      });
+  };
 }
 
+function capturePhoto() {
+  const photoCanvas = document.getElementById('photoCanvas');
+  const captureButton = document.getElementById('captureButton');
+
+  // Display options to save or retake the photo
+  const saveOrRetake = confirm('Do you want to save or retake the photo?');
+
+  if (saveOrRetake) {
+      // Save the photo to Google Sheets (implement this part)
+      alert('Photo saved to Google Sheets');
+  } else {
+      // Clear local storage and hide the photo
+      localStorage.removeItem('photoDataURL');
+      photoCanvas.style.display = 'none';
+      captureButton.style.display = 'none';
+  }
+}
+
+function displayCapturedImage() {
+  const capturedImageContainer = document.getElementById('capturedImageContainer');
+  const img = new Image();
+
+  // Load the captured image from localStorage
+  const photoDataURL = localStorage.getItem('photoDataURL');
+
+  if (photoDataURL) {
+      img.src = photoDataURL;
+      img.style.borderRadius = '50%'; // Add border-radius for a circular image
+      capturedImageContainer.innerHTML = '';
+      capturedImageContainer.appendChild(img);
+  } else {
+      capturedImageContainer.innerHTML = '';
+  }
+}
+
+
+function savePhoto() {
+  // Post the captured photo back to the main window
+  window.opener.postMessage(photoDataURL, window.location.origin);
+
+  // Save the photoDataURL to localStorage
+  localStorage.setItem('photoDataURL', photoDataURL);
+
+  window.close();
+}
+
+
+
+// Call the function to display the captured image when the page loads
+window.onload = function() {
+  displayCapturedImage();
+};
 
   
   if (window.location.href.includes('second.html')) {
@@ -141,3 +205,23 @@ function takePhoto() {
         window.print();
     });
 }
+
+
+if (window.location.href.includes('second.html')) {
+    const emailButton = document.getElementById('emailButton');
+
+    emailButton.addEventListener('click', function() {
+        const generatedNames = localStorage.getItem('generatedNames');
+        const subject = encodeURIComponent('Name Generator Result');
+        const body = encodeURIComponent(`Hi there! Here is the result of the name generator:%0D%0A%0D%0A${generatedNames}`);
+
+        // Create the mailto link
+        const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+
+        // Open the default email client
+        window.location.href = mailtoLink;
+    });
+}
+
+
+localStorage.removeItem('photoDataURL');

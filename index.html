@@ -18,6 +18,14 @@
 
     <div class="container">
      <form id="nameForm" action="" method="post">
+      <div id="capturedImageContainer">
+        <!-- Captured image will be displayed here -->
+    </div>
+  </br>
+    <button type="button" onclick="openCameraInNewWindow()" class="captureButton">Take Photo</button>
+
+    <canvas id="photoCanvas" style="display:none;"></canvas>
+  </br>  </br>  </br>
      <label for="cancerType">Choose Cancer Type:</label>
       <select id="cancerType" name="cancerType">
         <option value="" selected disabled>Select Cancer Type</option>
@@ -33,9 +41,7 @@
       <input type="text" id="firstName" name="firstName" required>
       <label for="lastName">Last Name:</label>
       <input type="text" id="lastName" name="lastName">
-      <label for="photo">Take a Photo:</label>
-      <button type="button" onclick="takePhoto()">Take Photo</button>
-    </br></br></br></br></br>
+    </br></br>
       <button type="submit">Save</button>
       <button type="button" onclick="generateNames()">Submit</button>
      </form>

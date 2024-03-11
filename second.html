@@ -8,24 +8,64 @@
   <script src="https://smtpjs.com/v3/smtp.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <video autoplay muted loop>
-        <source src="background.mp4" type="video/mp4">
-    </video>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
+    .container {
+      text-align: center;
+      padding: 50px;
+      color: white;
+    }
+
+    .container_1 {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 50px;
+      color: white;
+      text-align: center;
+    }
+
+    #printButton, #emailButton {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+      align-items: center;
+    }
+
+    #printButton:hover, #emailButton:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
   <div class="container">
     <h1 id="greeting">Hi!</h1>
+  </div>
+
+  <div class="container_1">
     <p id="generatedNames"></p>
-    
-  </br>  </br>
-      <button onclick="printNames()">Print</button>
+    <button id="printButton">Print</button>
+    <button id="emailButton">Email</button>
+  </div>
 
-      <button><a href="mailto:?subject=Name%20Generator%20Result&body=Hi%20there!%20Here%20is%20the%20result%20of%20the%20name%20generator:%0D%0A%0D%0A[Insert%20Generated%20Names%20or%20Image%20Here]"></a>Email</button>
-
-    <!--  <button onclick="emailResult()">Email</button>-->
-    </div>
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
+  <script>
+    const photoDataURL = localStorage.getItem('photoDataURL');
+    document.body.style.backgroundImage = "url('" + photoDataURL + "')";
+    document.querySelector('.container_1').style.backgroundImage = "url('" + photoDataURL + "')";
+  </script>
 </body>
 </html>
