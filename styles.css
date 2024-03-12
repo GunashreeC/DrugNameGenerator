@@ -12,6 +12,7 @@ body {
   position: relative;
   max-height: 80vh; /* Set the maximum height of the container */
   overflow-y: auto; /* Enable vertical scrolling */
+  width: 30%;
 }
 
 /* ... existing styles ... */
@@ -49,7 +50,7 @@ body {
   }
   
   button {
-    background-color: #4caf50;
+    background-color: #046f8b;
     color: #fff;
     padding: 10px;
     border: none;
@@ -58,7 +59,7 @@ body {
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #046f8b;
   }
   
   body {
@@ -93,7 +94,7 @@ body {
   }
   
   button {
-    background-color: #4caf50;
+    background-color: #046f8b;
     color: #fff;
     padding: 10px;
     border: none;
@@ -102,7 +103,7 @@ body {
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #046f8b;
   }
   body {
     font-family: 'Arial', sans-serif;
@@ -128,7 +129,7 @@ body {
   }
   
   button {
-    background-color: #4caf50;
+    background-color: #046f8b;
     color: #fff;
     padding: 10px;
     border: none;
@@ -137,7 +138,7 @@ body {
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #046f8b;
   }
 
   body {
@@ -224,11 +225,11 @@ body {
   
   select:focus {
     outline: none;
-    border-color: #4caf50;
+    border-color: #046f8b;
   }
   
   button {
-    background-color: #4caf50;
+    background-color: #046f8b;
     color: #fff;
     padding: 10px;
     border: none;
@@ -237,7 +238,7 @@ body {
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #046f8b;
   }
   
   *{
@@ -268,72 +269,6 @@ body{
     font-family: 'roboto';
     transition: .5s;
     transition-delay: .5s;;
-}
-
-.share-options.active{
-    transform: scale(1);
-    transition-delay: 0s;
-}
-
-.title{
-    opacity: 0;
-    transition: .5s;
-    transition-delay: 0s;
-    font-size: 20px;
-    text-transform: capitalize;
-    border-bottom: 1px solid #fff;
-    width: fit-content;
-    padding: 0 20px 3px 0;
-}
-
-.social-media{
-    opacity: 0;
-    transition: .5s;
-    transition-delay: 0s;
-    width: 250px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 10px 0;
-}
-
-.social-media-btn{
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #000;
-    color: #fff;
-    line-height: 50px;
-    font-size: 25px;
-    cursor: pointer;
-    margin: 0 5px;
-    text-align: center;
-}
-
-.social-media-btn:nth-child(1){
-    background: #FFA654;
-}
-
-.social-media-btn:nth-child(2){
-    background: #25D366;
-}
-
-.social-media-btn:nth-child(3){
-    background: #E4405F;
-}
-
-.social-media-btn:nth-child(4){
-    background: #1DA1F2;
-}
-
-.social-media-btn:nth-child(5){
-    background: #1877F2;
-}
-
-.social-media-btn:nth-child(6){
-    background: #0A66C2;
 }
 
 .link-container{
@@ -392,19 +327,28 @@ body {
 .container {
   position: relative;
 }
+#captureButton {
+  background-color: #046f8b;
+  color: white;
+  padding: 20px 40px; /* Adjust padding to increase size */
+  font-size: 24px; /* Adjust font-size to increase size */
+  border: none;
+  border-radius: 50%; /* Make it a circle */
+  cursor: pointer;
+  margin: 5px;
+}
 
 .captureButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #4CAF50;
+  top: 30px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 70%;
+  background-color: #046f8b;
   border: none;
   cursor: pointer;
   outline: none;
-  background-image: url('camera-icon.png'); /* Add your camera icon */
   background-size: cover;
 }
 

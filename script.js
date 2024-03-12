@@ -153,8 +153,10 @@ function capturePhoto() {
   }
 }
 
+// ... existing code ...
+
 function displayCapturedImage() {
-  const capturedImageContainer = document.getElementById('capturedImageContainer');
+  const resultContainer = document.getElementById('resultContainer');
   const img = new Image();
 
   // Load the captured image from localStorage
@@ -162,24 +164,42 @@ function displayCapturedImage() {
 
   if (photoDataURL) {
       img.src = photoDataURL;
-      img.style.borderRadius = '50%'; // Add border-radius for a circular image
-      capturedImageContainer.innerHTML = '';
-      capturedImageContainer.appendChild(img);
+      img.style.width = '100%'; // Ensure the image fills the container width
+      img.style.borderRadius = '50%';
+
+      if (resultContainer) {
+          resultContainer.innerHTML = ''; // Clear previous content
+          resultContainer.appendChild(img);
+      } else {
+          console.error('resultContainer not found');
+      }
   } else {
-      capturedImageContainer.innerHTML = '';
+      console.error('photoDataURL is null or undefined');
   }
 }
 
+// ... existing code ...
+
+
+
 
 function savePhoto() {
-  // Post the captured photo back to the main window
-  window.opener.postMessage(photoDataURL, window.location.origin);
+  try {
+      // Assuming you are setting photoDataURL correctly
+      console.log('photoDataURL before saving:', photoDataURL);
 
-  // Save the photoDataURL to localStorage
-  localStorage.setItem('photoDataURL', photoDataURL);
+      // Post the captured photo back to the main window
+      window.opener.postMessage(photoDataURL, window.location.origin);
 
-  window.close();
+      // Save the photoDataURL to localStorage
+      localStorage.setItem('photoDataURL', photoDataURL);
+
+      window.close();
+  } catch (error) {
+      console.error('Error saving photo to local storage:', error);
+  }
 }
+
 
 
 

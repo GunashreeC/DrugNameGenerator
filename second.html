@@ -4,10 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Name Generator - Result</title>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
   <style>
     body {
       margin: 0;
@@ -19,21 +15,24 @@
 
     .container {
       text-align: center;
-      padding: 50px;
+      padding: 20px;
       color: white;
+      background-color: #5EB6AB; /* Add your preferred background color here */
     }
 
+
     .container_1 {
-      background-size: cover;
+      background-size: 55% 100%; /* Set the background size to 100% width and 100% height */
       background-position: center;
       background-repeat: no-repeat;
-      padding: 50px;
+      padding: 0;
       color: white;
       text-align: center;
     }
 
+
     #printButton, #emailButton {
-      background-color: #4CAF50;
+      background-color: #046f8b;
       color: white;
       padding: 10px 20px;
       font-size: 16px;
@@ -45,7 +44,7 @@
     }
 
     #printButton:hover, #emailButton:hover {
-      background-color: #45a049;
+      background-color: #046f8b;
     }
   </style>
 </head>
@@ -53,19 +52,52 @@
 <body>
   <div class="container">
     <h1 id="greeting">Hi!</h1>
+  
+  <div class="container_1"></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+    <h2 id="generatedNames" style="background-color: #5a5a5a; display: inline-block;"></h2>
+  </br>
   </div>
-
-  <div class="container_1">
-    <p id="generatedNames"></p>
-    <button id="printButton">Print</button>
+  <button id="printButton">Print</button>
     <button id="emailButton">Email</button>
-  </div>
+</div>
 
-  <script src="script.js"></script>
   <script>
     const photoDataURL = localStorage.getItem('photoDataURL');
+    console.log('photoDataURL:', photoDataURL);
     document.body.style.backgroundImage = "url('" + photoDataURL + "')";
     document.querySelector('.container_1').style.backgroundImage = "url('" + photoDataURL + "')";
+
+    if (window.location.href.includes('second.html')) {
+      const greetingElement = document.getElementById('greeting');
+      const generatedNamesElement = document.getElementById('generatedNames');
+      const printButton = document.getElementById('printButton');
+
+      const username = localStorage.getItem('username');
+      const generatedFirstName = localStorage.getItem('generatedFirstName');
+      const generatedLastName = localStorage.getItem('generatedLastName');
+
+      greetingElement.textContent = `Hi, ${username}!`;
+      generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
+
+      printButton.addEventListener('click', function() {
+          window.print();
+      });
+    }
+
+    const emailButton = document.getElementById('emailButton');
+
+    emailButton.addEventListener('click', function() {
+        const generatedNames = localStorage.getItem('generatedNames');
+        const subject = encodeURIComponent('Name Generator Result');
+        const body = encodeURIComponent(`Hi there! Here is the result of the name generator:${generatedFirstName}`);
+
+        // Create the mailto link
+        const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+
+        // Open the default email client
+        window.location.href = mailtoLink;
+    });
+    
   </script>
 </body>
 </html>

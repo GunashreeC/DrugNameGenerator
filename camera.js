@@ -52,7 +52,6 @@ function showCapturedPhoto() {
 
 function retakePhoto() {
     // Clear the captured photo data URL
-    photoDataURL = null;
 
     // Enable the "Capture" button
     document.getElementById('captureButton').disabled = false;
