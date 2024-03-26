@@ -18,16 +18,16 @@
 
     <div class="container">
      <form id="nameForm" action="" method="post">
-      <div id="capturedImageContainer" style="width: min-content;">
+      <div id="capturedImageContainer" style="width: auto;">
         <!-- Captured image will be displayed here -->
     </div>
   </br>
-    <button type="button" onclick="openCameraInNewWindow()" class="captureButton">Take Photo</button>
+    <button type="button" onclick="openCameraInNewWindow()" class="captureButton" required>Take Photo</button>
 
     <canvas id="photoCanvas" style="display:none;"></canvas>
   </br>  </br>  </br>
      <label for="cancerType">Choose Cancer Type:</label>
-      <select id="cancerType" name="cancerType">
+      <select id="cancerType" name="cancerType" required> 
         <option value="" selected disabled>Select Cancer Type</option>
         <option value="Breast Cancer">Breast Cancer</option>
         <option value="Lung Cancer">Lung Cancer</option>
@@ -40,10 +40,10 @@
       <label for="firstName">First Name:</label>
       <input type="text" id="firstName" name="firstName" required>
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" name="lastName">
+      <input type="text" id="lastName" name="lastName" required>
     </br></br>
       <button type="submit">  Save </button>
-      <button type="button" onclick="generateNames()">Submit</button>
+      <button type="submit" onclick="generateNames()">Submit</button>
      </form>
     </div>
     <script src="googlesheet.js"></script>
